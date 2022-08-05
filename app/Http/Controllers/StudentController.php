@@ -29,7 +29,7 @@ class StudentController extends Controller
     {
         $rayons = Rayon::all();
         $studentGroups = StudentGroup::all();
-        return view('students.create', compact('rayons', 'studentGroups', $rayons, $studentGroups));
+        return view('students.create', compact('rayons', 'studentGroups'));
     }
 
     /**
