@@ -9,6 +9,6 @@ class StudentGroup extends Model
 {
     use HasFactory;
 
-    protected $table = 'student_group';
+    protected $table = 'student_groups';
     protected $guarded = ['id'];
 }

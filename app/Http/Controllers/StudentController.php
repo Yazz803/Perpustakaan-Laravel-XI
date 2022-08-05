@@ -85,7 +85,16 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        //
+        $request->validate([
+            'nis' => 'required',
+            'nama' => 'required',
+            'rombel' => 'required',
+            'rayon' => 'required',
+        ]);
+
+        $student->update($request->all());
+
+        return redirect()->route('students.index')->with('success', 'Berhasil di Edit!');
     }
 
     /**
@@ -96,6 +105,8 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        $student->delete();
+
+        return redirect()->route('students.index')->with('success', 'Berhasil Dihapus!');
     }
 }

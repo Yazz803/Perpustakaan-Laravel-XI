@@ -15,7 +15,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $book = Book::latest()->paginate(5);
+        $books = Book::latest()->paginate(5);
 
         return view('books.index', compact('books'))
                 ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -32,8 +32,8 @@ class BookController extends Controller
         //     'publishers' => Publisher::all()
         // ]);
 
-        $publisher = Publisher::all();
-        return view('book.create', compact('publishers', $publisher));
+        $publishers = Publisher::all();
+        return view('books.create', compact('publishers', $publishers));
     }
 
     /**
@@ -52,7 +52,7 @@ class BookController extends Controller
 
         Book::create($validatedData);
 
-        return redirect()->route('book.index')->with('success', 'Berhasil Menyimpan!');
+        return redirect()->route('books.index')->with('success', 'Berhasil Menyimpan!');
     }
 
     /**
@@ -94,7 +94,7 @@ class BookController extends Controller
         ]);
 
         Book::where('id', $book->id)->update($validatedData);
-        return redirect()->route('book.index')->with('success', 'Berhasil Update!');
+        return redirect()->route('books.index')->with('success', 'Berhasil Update!');
     }
 
     /**
@@ -107,6 +107,6 @@ class BookController extends Controller
     {
         $book->delete();
 
-        return redirect()->route('book.index')->with('success', 'Berhasil Hapus!');
+        return redirect()->route('books.index')->with('success', 'Berhasil Hapus!');
     }
 }

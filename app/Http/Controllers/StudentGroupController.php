@@ -65,8 +65,12 @@ class StudentGroupController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(StudentGroup $studentGroup)
-    {
-        return view('studentGroups.edit', compact('studentGroups'));
+    {   
+        // $studentGroup = StudentGroup::all();
+        // return view('studentGroups.edit', compact('studentGroups'));
+        return view('studentGroups.edit', [
+            'studentGroup' => $studentGroup
+        ]);
     }
 
     /**

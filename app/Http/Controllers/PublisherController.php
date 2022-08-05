@@ -15,7 +15,7 @@ class PublisherController extends Controller
     public function index()
     {
         $publishers = Publisher::latest()->paginate(5);
-        return view('publishers.index', compact('publisher'))->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('publishers.index', compact('publishers'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
